@@ -221,3 +221,98 @@ function disc(a, b, c) {
         return;
     }    
 }
+
+
+
+
+
+//                      ДЗ_JS_5
+
+// - Есть функция function f(x) {
+//     //Тело функции (ваш код здесь должен быть)
+// }
+// Научиться отличать отсутсвие аргументов у функции или то что первый аргумент задан. 
+// Если аргментов нет то функция возвращает 0, если аргумент undefined то возвращает 0. 
+// Дополнительное задание: реализовать функцию function f(x) как стрелочную.
+
+function f() {
+    return (arguments.length >= 1) ? 1 : 0;
+}
+
+let f = () => (arguments.length >= 1) ? 1 : 0;
+f();
+
+// - Написать функцию  sum(a, b), которая возвращает сумму переданных ей аргументов. 
+// Реализовать с помощью function declaration и с
+// помощью стрелочной функции. !!!Использовать цикл "for in" если это возможно.
+// (
+//     arguments or =>
+//     for in не работает, в видео
+// )
+
+// function sum(a, b) {
+//     var sum = 0;
+
+//     for ( let i = 0; i < arguments.length; i++) {
+//         if( (typeof(arguments[i]) === "number") && !isNaN(arguments[i])) {
+//             sum+= arguments[i];
+//         }
+//     }
+//  return sum;
+// }
+// var res = sum(2, 3);
+// var res2 = sum(2, 3, 4, "5", 10);
+
+
+
+// - Дан массив [1, 2, 56, 28, 90, 5, 6]. Отсортировать массив в порядке 
+// возрастания его элементов. В отсортированном массиве используя 
+// метод indexof вывести индекс элемента со значением "6". 
+
+var numbers = [1, 2, 56, 28, 90, 5, 6];
+for (var number of numbers) {
+}
+console.log(numbers)
+
+// var indexofSix = numbers.indexOf(6); до сортировки: 
+// индекс первой найденной 6 
+
+numbers.sort() // сортирует по первой цифре
+console.log(numbers)
+numbers.sort(function(a, b) {
+    if (a> b) {
+        return 1;
+    }    else {
+        return -1;
+    }
+})
+console.log(numbers)
+
+
+
+// - Задание с прошлых занятий. Создать массив объектов для юзеров 
+// [{name: ‘Ivan’, age: 18}, {name: ‘Petr’, age: 12}, {name: ‘Sidor’, age: 25}, {name: ‘Pavel’, age: 24}, {name: ‘Sasha’, age: 29}]
+// Написать скрипт, который будет на выходе отдавать два массива. Первый с совершеннолетними пользователями, второй с несовершеннолетними.
+// !Использовать метод filter. Полученные на выходе два массива отсортировать (каждый из них в отдельности) 
+// по старшинству членов (от самого старшего к самому младшему).
+// - Расширить предыдущее задание так чтобы из исходного массива удалялись все несовершенолетние пользователи.
+
+// (a.age < b.age)
+
+let userArr = [
+    { name: 'Ivan', age: 18 },
+    { name: 'Petr', age: 12 },
+    { name: 'Sidor', age: 25 },
+    { name: 'Pavel', age: 24 },
+    { name: 'Sasha', age: 29 },
+];
+
+let userAdult = [];
+let userUnderage = [];
+
+let userUnderage = userArr.filter(x => x.age < 18);
+let userAdult = userArr.filter(x => x.age >= 18);
+console.log(userUnderage, userAdult);
+
+// var UnderAge = userArr.find((user) => user.age === 18); первый 18летний, вернёт undefind, если нет такого эл-та
+// var UnderAge = userArr.findIndex(user => user.age === 49); вернуть индекс элемента, зная только какую-то инфу, вернёт -1, если нет такого эл-та
