@@ -235,12 +235,14 @@ function disc(a, b, c) {
 // Если аргментов нет то функция возвращает 0, если аргумент undefined то возвращает 0. 
 // Дополнительное задание: реализовать функцию function f(x) как стрелочную.
 
-function f() {
+function f(x) {
     return (arguments.length >= 1) ? 1 : 0;
 }
-//  or:
+f();
+                                            //  or:
+let f = (...x) => x.length >= 1 ? 1 : 0;
+f();
 
-let f = () => 
 
 
 // - Написать функцию  sum(a, b), которая возвращает сумму переданных ей аргументов. 
@@ -261,9 +263,21 @@ function sum(a, b) {
     }
  return sum;
 }
-var res = sum(2, 3);
-var res2 = sum(2, 3, 4, "5", 10);
+sum();
 
+                                    // or:
+
+
+let sum = (a, b, ...args) => {
+    var sum = 0;
+    for ( let i = 0; i < args.length; i++) {
+        if( (typeof(args[i]) === "number") && !isNaN(args[i])) {
+            sum+= args[i];
+        }
+    }
+    return sum;
+}
+sum();
 
 
 
