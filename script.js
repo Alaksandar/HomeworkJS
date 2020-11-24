@@ -238,9 +238,10 @@ function disc(a, b, c) {
 function f() {
     return (arguments.length >= 1) ? 1 : 0;
 }
+//  or:
 
-let f = () => (arguments.length >= 1) ? 1 : 0;
-f();
+let f = () => 
+
 
 // - Написать функцию  sum(a, b), которая возвращает сумму переданных ей аргументов. 
 // Реализовать с помощью function declaration и с
@@ -250,18 +251,19 @@ f();
 //     for in не работает, в видео
 // )
 
-// function sum(a, b) {
-//     var sum = 0;
+function sum(a, b) {
+    var sum = 0;
 
-//     for ( let i = 0; i < arguments.length; i++) {
-//         if( (typeof(arguments[i]) === "number") && !isNaN(arguments[i])) {
-//             sum+= arguments[i];
-//         }
-//     }
-//  return sum;
-// }
-// var res = sum(2, 3);
-// var res2 = sum(2, 3, 4, "5", 10);
+    for ( let i = 0; i < arguments.length; i++) {
+        if( (typeof(arguments[i]) === "number") && !isNaN(arguments[i])) {
+            sum+= arguments[i];
+        }
+    }
+ return sum;
+}
+var res = sum(2, 3);
+var res2 = sum(2, 3, 4, "5", 10);
+
 
 
 
