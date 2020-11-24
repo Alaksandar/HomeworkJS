@@ -357,24 +357,20 @@ console.log(arr2);
 var arr3 = arr2.slice(-4);
 console.log(arr3, arr2);
 
-arr3.sort(function(a, b) {
-    if (a > b) {
-        return 1;
-    }    else {
-        return -1;
-    }
-})
+arr3.sort( (a, b) => a - b );   
+//                              // or:
+// arr3.sort(function(a, b) {
+//     if (a > b) {
+//         return 1;
+//     }    else {
+//         return -1;
+//     }
+// })
 console.log(arr3);
 
 // 	- Отсортировать массив arr2 по убыванию. Посчитать сумму его эелементов. (Попробуйте использовать метод reduce в статье про методы есть его описание).
 
-arr2.sort(function(a, b) {
-    if (a < b) {
-        return 1;
-    }    else {
-        return -1;
-    }
-})
+arr3.sort( (a, b) => b - a ); 
 console.log(arr2);
 
 let arr2Sum = arr2.reduce((sum, current) => sum + current, 0);
