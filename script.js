@@ -268,7 +268,7 @@ sum();
                                     // or:
 
 
-let sum = (a, b, ...args) => {
+let sum = (...args) => {
     var sum = 0;
     for ( let i = 0; i < args.length; i++) {
         if( (typeof(args[i]) === "number") && !isNaN(args[i])) {
@@ -323,12 +323,15 @@ let userArr = [
     { name: 'Sasha', age: 29 },
 ];
 
-let userAdult = [];
-let userUnderage = [];
+let userUnderage = userArr.filter(user => user.age < 18);
+let userAdult = userArr.filter(user => user.age >= 18);
 
-let userUnderage = userArr.filter(x => x.age < 18);
-let userAdult = userArr.filter(x => x.age >= 18);
+userUnderage.sort((a, b) => b.age - a.age);
+userAdult.sort((a, b) => b.age - a.age);
 console.log(userUnderage, userAdult);
 
-// var UnderAge = userArr.find((user) => user.age === 18); первый 18летний, вернёт undefind, если нет такого эл-та
-// var UnderAge = userArr.findIndex(user => user.age === 49); вернуть индекс элемента, зная только какую-то инфу, вернёт -1, если нет такого эл-та
+// - Расширить предыдущее задание так чтобы из исходного массива удалялись все несовершенолетние пользователи.
+
+let userUnderage = userArr.filter(user => user.age < 18).sort((a, b) => b.age - a.age);
+userArr = userArr.filter(user => user.age >= 18).sort((a, b) => b.age - a.age);
+
