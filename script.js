@@ -308,6 +308,7 @@ let userArr = [
 ];
 
 let userAdult = [];
+
 let userUnderage = [];
 
 let userUnderage = userArr.filter(x => x.age < 18);
@@ -370,7 +371,7 @@ console.log(arr3);
 
 // 	- Отсортировать массив arr2 по убыванию. Посчитать сумму его эелементов. (Попробуйте использовать метод reduce в статье про методы есть его описание).
 
-arr3.sort( (a, b) => b - a ); 
+arr2.sort( (a, b) => b - a ); 
 console.log(arr2);
 
 let arr2Sum = arr2.reduce((sum, current) => sum + current, 0);
