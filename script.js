@@ -97,7 +97,8 @@ hello2('Василий');
 
 function mul(n = +prompt('Введи число', ''), m = +prompt('Введи число', '')) {
     let result = n * m;
-    if ( (typeof (n || m) === "number") && !isNaN(n || m) && ((n || m) !== undefined)) {
+    if( (typeof n === "number" && !isNaN(n) && n !== undefined) &&
+        (typeof m === "number" && !isNaN(m) && m !== undefined) ) {
         return result;
     }
 }
