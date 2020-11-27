@@ -72,7 +72,7 @@ console.log(usersAfterYear);
 
 
 
-// - Дан объект var users = {
+// 4. - Дан объект var users = {
 // 					first_name: "pavel",
 // 					second_name: "ivanov",
 // 					father_name: "ivanovich",
@@ -84,14 +84,61 @@ console.log(usersAfterYear);
 // (например не "pavel" a "Pavel"). Для решения этой задачи рекомендую использовать 
 // методы Object.keys или Object.values и методы строк как UpperCase. 
 
+var users = {
+    					first_name: "pavel",
+    					second_name: "ivanov",
+    					father_name: "ivanovich",
+    					city: "minsk",
+    					car: "subaru",
+    					telephone: "samsung" 
+    				}
+
+// var userKeyArr = Object.keys(users);
+// var userKeyStr = userKeyArr.join(", ");
+
+var userValueArr = Object.values(user);
+var userValueStr = userValueArr.join(", ");
+console.log(userValueArr);
 
 
 
 // - Посчитать первые 8 чисел Фибоначчи использую рекурсию. Например: fibonachi(n); 
 // (При вызове функции положите n = 8); 
 
+var fibonachi = (n) => {
+    if (n <= 1) {
+        return n;
+    } else {
+        return fibonachi(n - 1) + fibonachi(n - 2);
+    }
+}
+fibonachi(8);
+
+                            // or:
+// var fibonachi = (n) => n <= 1 ? n : fibonachi(n - 1) + fibonachi(n - 2);
+// fibonachi(8);
 
 
 
-// - Посчитать с помощью рекурсии факториал числа 10. Например: factorial(n); 
-// (При выозове полжите n = 10); 	
+// 6. - Посчитать с помощью рекурсии факториал числа 10. Например: factorial(n); 
+// (При выозове положите n = 10); 	
+
+var factorial = (n) => {
+    n >= 1;
+    if (n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    } 
+}
+console.log(factorial(10));
+                                    
+                                    // or:
+// var factorial = (n) => n == 1 ? 1 : n * factorial(n - 1);
+// console.log(factorial(10));
+
+                                    // or:
+// function factorial(n) {
+//     return n ? n * factorial(n - 1) : 1;
+// }
+// console.log(factorial(10));
