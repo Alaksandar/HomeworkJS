@@ -24,7 +24,18 @@ if ( typeof age === "number" && !isNaN(age) ) {
         }
     }
 } else {
-    alert ('Отмена');
+    alert ('Введите число');
+}
+                            // or:
+let age = +prompt('Сколько вам лет?', '');
+if (age >= 18 && typeof age === "number" && !isNaN(age) ) {
+    alert (`поздравляем, вам ${age} полных лет`);
+    alert ('вы совершеннолетний');
+} else if (age <= 18 && typeof age === "number" && !isNaN(age) )  {
+    alert (`поздравляем, вам ${age} полных лет`);
+    alert ('вы несовершеннолетний');
+} else {
+    alert('Введите число')
 }
 
 
@@ -40,6 +51,20 @@ for (let i = 0; i < numbers.length; i++) {
     }
 } 
 alert(sum);
+
+                        // or with function: 
+var numbers = [10, 25, 100];
+function arrSum(array) {
+    var sum = 0;
+    for (var i = 0; i < array.length; i++) {
+        if(typeof array[i] === "number" && !isNaN(array[i])) {
+            sum += array[i];
+        }
+    }
+    return sum;
+} 
+arrSum(numbers);
+
 
 
 //     4. Задание со звездочкой. Создать массив объектов для юзеров [{name: ‘Ivan’, age: 18}, {name: ‘Petr’, age: 12}, {name: ‘Sidor’, age: 25}, {name: ‘Pavel’, age: 24}, {name: ‘Sasha’, age: 29}]
