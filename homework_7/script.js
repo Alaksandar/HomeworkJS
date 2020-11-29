@@ -27,7 +27,7 @@ console.log(arrUnique);
 var arr = [1, 2, 3, 4, 4, 5, 2, 9, 4];
 var arrUnique = arr.reduce((newArr, item) => {
     console.log(newArr, newArr.indexOf(item));
-    if (newArr.indexOf(item) == -1) {
+    if (newArr.indexOf(item) === -1) {
         newArr.push(item);
         return newArr;
     } else {
@@ -64,7 +64,13 @@ var users = [
     		{id: 12, name: "Денис", age: 20}
         ];
         
-var usersAfterYear = users.map(user => (user.age +=1, user));
+var usersAfterYear = users.map(user => (user.age +=1, user)); // or:
+
+// var usersAfterYear = users.map(user => {
+//     user.age +=1;
+//     return user;
+// })
+
 usersAfterYear = usersAfterYear.filter(user => user.age >= 18);
 console.log(usersAfterYear);
 
@@ -76,7 +82,28 @@ console.log(usersAfterYear);
 // то вы должны оставить только Петю или Свету одного, а не их двоих). 
 // (Это задание похоже на первое задания про массив arr и arrUnique)
 
+var usersAfterYearUniqueAge = Object.values(
+    usersAfterYear.reduce((newArr, user) => {
+        console.log(newArr, user);
+        if (!newArr[user.age]) {
+            newArr[user.age] = user;
+        }
+        return newArr;
+    }, {})
+);
+console.log(usersAfterYearUniqueAge);
 
+// or! function can remove any property duplicates:
+
+function removeDuplicates(myArr, prop) {
+    return myArr.filter((user, index, arr) => {
+        console.log(user, index, arr);
+        return arr.map(mapUser => mapUser[prop]).indexOf(user[prop]) === index;
+    });
+}
+
+var usersAfterYearUniqueAge = removeDuplicates(usersAfterYear,"age");
+console.log(usersAfterYearUniqueAge);
 
 
 // 4. - Дан объект var users = {
@@ -101,10 +128,10 @@ var users = {
                     }
                     
 var userKeyArr = Object.keys(users);
-userKeyArr.forEach(key => { 
-    users[key] = users[key][0].toUpperCase() + users[key].slice(1);
+userKeyArr.forEach(value => { 
+    users[value] = users[value][0].toUpperCase() + users[value].slice(1);
 });
-console.log(users);                  
+console.log(users);
 
 // var userKeyArr = Object.keys(users);
 // var userValueArr = Object.values(users);
@@ -127,6 +154,12 @@ console.log(users);
 //     var input = userValueArr[i];
 //     var firstLetter = input.slice(0,1);
 //     var capitalized = input.replace(firstLetter, firstLetter.toUpperCase());
+//     var result = capitalized;
+// console.log(result);
+// }
+
+// for(var i = 0; i < userValueArr.length; i++) {
+//     var capitalized = userValueArr[i][0].toUpperCase() + userValueArr[i].slice(1);
 //     var result = capitalized;
 // console.log(result);
 // }
