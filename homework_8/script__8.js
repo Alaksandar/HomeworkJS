@@ -34,3 +34,10 @@ console.log(today);
 //   			name: "Ivan",
 //   			age: 19};
 // Создайте копию объекта использую сериализацию и десериализацию (JSON.stringify(), JSON.parse());
+
+let user = {
+      		name: "Ivan",
+            age: 19
+            };
+
+let user1 = JSON.parse(JSON.stringify(user));
