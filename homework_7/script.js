@@ -84,7 +84,6 @@ console.log(usersAfterYear);
 
 var usersAfterYearUniqueAge = Object.values(
     usersAfterYear.reduce((newArr, user) => {
-        console.log(newArr, user);
         if (!newArr[user.age]) {
             newArr[user.age] = user;
         }
@@ -97,13 +96,26 @@ console.log(usersAfterYearUniqueAge);
 
 function removeDuplicates(myArr, prop) {
     return myArr.filter((user, index, arr) => {
-        console.log(user, index, arr);
         return arr.map(mapUser => mapUser[prop]).indexOf(user[prop]) === index;
     });
 }
 
 var usersAfterYearUniqueAge = removeDuplicates(usersAfterYear,"age");
 console.log(usersAfterYearUniqueAge);
+
+// or:
+var usersAfterYearUniqueAge = usersAfterYear.reduce((arr, item) => {
+    var index = arr.findIndex(el => el.age === item.age);
+    if (index === -1) {
+        arr.push(item);
+        return arr;
+    } else {
+        return arr;
+    }
+}, [])
+
+console.log(usersAfterYearUniqueAge);
+
 
 
 // 4. - Дан объект var users = {
