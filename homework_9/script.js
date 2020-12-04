@@ -1,6 +1,15 @@
 // 1. - Напишите функцию func(), которая при каждом своём вызове будет возвращать 
 // количество своих вызовов (сколько раз ее вызызвали до этого плюс этот вызов);
 
+function func() {
+    let count = 0;
+  
+    return function() {
+      return ++count;
+    };
+  }
+  let counter = func();
+  alert(counter());
 
 
 
@@ -13,7 +22,7 @@
 function numbers() {
     let i = 0;
     let timerId = setInterval(function() {
-        alert(i);
+        console.log(i);
         if (i == 20) {
             clearInterval(timerId);
         }
@@ -26,7 +35,7 @@ console.log(numbers());
 function numbers() {
     let i = 0;
     function go() {
-        alert(i);
+        console.log(i);
         if (i == 20) {
             clearInterval(timerId);
         }
@@ -41,7 +50,7 @@ console.log(numbers());
 function numbers() {
     let i = 0;
     setTimeout (function go() {
-        alert(i);
+        console.log(i);
         if (i < 20) {
             setTimeout(go, 2000);
         }
@@ -51,8 +60,22 @@ function numbers() {
 console.log(numbers());
 
 
+
 // 3. - Напишите функцию startTimer(), которая будет запускать вывод через 
-// confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?"),  при нажатии "ДА" выводите 
+// confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?"), при нажатии "ДА" выводите 
 // alert("Реклама") через 5 секунд, если нажали "НЕТ", то повторить вопрос
 // confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?")
 // и так до тех пор, пока пользователь не нажмет "ДА" и не увидит эту рекламу через alert.
+
+function startTimer() {
+    let timerId = setTimeout (function() {
+        confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?");
+            if (1) {
+                setTimeout (function() {
+                    alert("Реклама");
+                }, 5000);
+            } else {
+                return timerId;
+            }
+    }, 0);
+}
