@@ -62,20 +62,45 @@ console.log(numbers());
 
 
 // 3. - Напишите функцию startTimer(), которая будет запускать вывод через 
-// confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?"), при нажатии "ДА" выводите 
+// confirm("Реклама исчезнет через 5 секунд, вы согласны ?"), при нажатии "ДА" выводите 
 // alert("Реклама") через 5 секунд, если нажали "НЕТ", то повторить вопрос
 // confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?")
 // и так до тех пор, пока пользователь не нажмет "ДА" и не увидит эту рекламу через alert.
 
 function startTimer() {
-    let timerId = setTimeout (function() {
-        confirm("Реклама исчезнет счерез 5 секунд, вы согласны ?");
-            if (1) {
-                setTimeout (function() {
-                    alert("Реклама");
-                }, 5000);
-            } else {
-                return timerId;
-            }
-    }, 0);
+    const promo = confirm("Реклама исчезнет через 5 секунд, вы согласны ?");
+        if (promo == false) {
+            return startTimer();
+        } else {
+            setTimeout (function() {
+                alert("Реклама");
+            }, 5000);
+        }
 }
+startTimer();
+
+
+
+// Используйте метод reduce в комбинации с concat для свёртки массива массивов в один массив, 
+// у которого есть все элементы входных массивов.
+// Например:
+// var arrays = [[1, 2, 3], [4, 5], [6]];
+// Ваш код тут
+// → [1, 2, 3, 4, 5, 6]
+
+var arrays = [[1, 2, 3], [4, 5], [6]];
+// 1)
+let arr = arrays.reduce(function(acc, el, i) {
+    console.log(acc, el, i);
+    acc = acc.concat(arrays[i]);
+    return acc;
+}, []);
+// 2)
+arr = arrays.reduce((acc, el, i) => acc.concat(el));
+// 3)
+arr = arrays.reduce((acc, el, i) => [...acc, ...el]);
+// 4)
+arr = arrays.reduce((acc, el) => {
+    console.log(acc, [...el]);
+    return [...acc, ...el];
+}, []);
