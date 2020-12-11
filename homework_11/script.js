@@ -18,13 +18,15 @@ const secondHouse = new houseBuilder(15, 20 , 2);
 // Данный метод занести в прототип конструктора. Вызвать данный метод на каждом созданном 
 // объекте и результат записать в поле totalArea каждого объекта.
 
-houseBuilder.prototype.calcArea = function() {
+function calcArea() {
     alert(`Суммарная площадь всех этажей дома: ${this.width * this.length * this.floors}`);
 };
 
-firstHouse.calcArea();
-secondHouse.calcArea();
+calcArea.bind(firstHouse)();
+calcArea.bind(secondHouse)();
 
+firstHouse.totalArea = calcArea.bind(firstHouse);
+secondHouse.totalArea = calcArea.bind(secondHouse);
 
 
 // 3. - Дана функция function askArea(result, resolve, reject) {
