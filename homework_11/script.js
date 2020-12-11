@@ -1,8 +1,16 @@
 // 1. - Создайте функцию-конструктор houseBuilder, которая позволяет создавать 
-// объект дачного дома с параметрами ширины длины и количества этажей.
+// объект дачного дома с параметрами ширины, длины и количества этажей.
 // Создайте два объекта firstHouse и secondHouse на основании этой функции конструктора. 
 // (Длина, ширина, количество этажей - числовой тип данных, значения придумайте сами). 
 
+function houseBuilder(width, length, floors) {
+    this.width = width;
+    this.length = length;
+    this.floors = floors;
+};
+
+const firstHouse = new houseBuilder(10, 10, 3);
+const secondHouse = new houseBuilder(15, 20 , 2);
 
 
 
@@ -10,6 +18,12 @@
 // Данный метод занести в прототип конструктора. Вызвать данный метод на каждом созданном 
 // объекте и результат записать в поле totalArea каждого объекта.
 
+houseBuilder.prototype.calcArea = function() {
+    alert(`Суммарная площадь всех этажей дома: ${this.width * this.length * this.floors}`);
+};
+
+firstHouse.calcArea();
+secondHouse.calcArea();
 
 
 
