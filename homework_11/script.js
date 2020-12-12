@@ -18,15 +18,28 @@ const secondHouse = new houseBuilder(15, 20 , 2);
 // Данный метод занести в прототип конструктора. Вызвать данный метод на каждом созданном 
 // объекте и результат записать в поле totalArea каждого объекта.
 
+// 2.a) .bind
+
 function calcArea() {
-    alert(`Суммарная площадь всех этажей дома: ${this.width * this.length * this.floors}`);
+    return this.width * this.length * this.floors;
 };
 
 calcArea.bind(firstHouse)();
 calcArea.bind(secondHouse)();
 
-firstHouse.totalArea = calcArea.bind(firstHouse);
-secondHouse.totalArea = calcArea.bind(secondHouse);
+firstHouse.totalArea = calcArea.bind(firstHouse)();
+secondHouse.totalArea = calcArea.bind(secondHouse)();
+
+
+// 2.b) .prototype
+
+houseBuilder.prototype.calcArea = function(){
+    return this.width * this.length * this.floors;
+}
+
+firstHouse.calcArea();
+secondHouse.calcArea();
+
 
 
 // 3. - Дана функция function askArea(result, resolve, reject) {
@@ -45,3 +58,24 @@ secondHouse.totalArea = calcArea.bind(secondHouse);
 
 // Будет ли такой код работать корректно? Если нет, то используйте 
 // известные вам механизмы привязки, чтобы решить эту задачу. 
+
+function askArea(result, resolve, reject) {
+    let area = result();
+    if (area >= "120") resolve();
+      	else reject();
+}
+
+houseBuilder.prototype.checkAreaSuccessfully = function(){
+    alert("План по стройке выполнен");
+}
+houseBuilder.prototype.checkAreaFail = function(){
+    alert("План по стройке не выполнен");
+} 
+
+// 3.a)
+askArea(calcArea.bind(firstHouse), firstHouse.checkAreaSuccessfully.bind(firstHouse), firstHouse.checkAreaFail.bind(firstHouse));
+askArea(calcArea.bind(secondHouse), secondHouse.checkAreaSuccessfully.bind(secondHouse), secondHouse.checkAreaFail.bind(secondHouse));
+
+// 3.b)
+askArea(firstHouse.calcArea.bind(firstHouse), firstHouse.checkAreaSuccessfully.bind(firstHouse), firstHouse.checkAreaFail.bind(firstHouse));
+askArea(secondHouse.calcArea.bind(secondHouse), secondHouse.checkAreaSuccessfully.bind(secondHouse), secondHouse.checkAreaFail.bind(secondHouse));
