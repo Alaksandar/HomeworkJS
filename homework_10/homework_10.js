@@ -53,3 +53,13 @@ User.prototype.getFullInfo = function() {
 
 writer.getFullInfo();
 character.getFullInfo();
+
+
+// or:
+function getFullInfo (){
+    alert(`Значимое влияние на американскую антивоенную литературу оказал 
+    ${this.first_name} ${this.second_name} (прожил ${this.age} года) из города ${this.city}`);
+};
+
+getFullInfo.bind(writer)();
+getFullInfo.bind(character)();
