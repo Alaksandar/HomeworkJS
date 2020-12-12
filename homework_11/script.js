@@ -9,7 +9,7 @@ function houseBuilder(width, length, floors) {
     this.floors = floors;
 };
 
-const firstHouse = new houseBuilder(10, 10, 3);
+const firstHouse = new houseBuilder(10, 10, 1);
 const secondHouse = new houseBuilder(15, 20 , 2);
 
 
