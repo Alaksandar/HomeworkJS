@@ -37,8 +37,8 @@ houseBuilder.prototype.calcArea = function(){
     return this.width * this.length * this.floors;
 }
 
-firstHouse.calcArea();
-secondHouse.calcArea();
+firstHouse.totalArea = firstHouse.calcArea();
+secondHouse.totalArea = secondHouse.calcArea();
 
 
 
@@ -79,3 +79,24 @@ askArea(calcArea.bind(secondHouse), secondHouse.checkAreaSuccessfully.bind(secon
 // 3.b)
 askArea(firstHouse.calcArea.bind(firstHouse), firstHouse.checkAreaSuccessfully.bind(firstHouse), firstHouse.checkAreaFail.bind(firstHouse));
 askArea(secondHouse.calcArea.bind(secondHouse), secondHouse.checkAreaSuccessfully.bind(secondHouse), secondHouse.checkAreaFail.bind(secondHouse));
+
+
+
+// get totalArea :
+function houseBuilder(width, length, floors) {
+    this.width = width;
+    this.length = length;
+    this.floors = floors;
+
+    Object.defineProperty(this, "totalArea", {
+        get() {
+            return this.width * this.length * this.floors;
+        }
+    });
+};
+
+const firstHouse = new houseBuilder(10, 10, 1);
+const secondHouse = new houseBuilder(15, 20 , 2);
+
+console.log(firstHouse.totalArea);
+console.log(secondHouse.totalArea);
