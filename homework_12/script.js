@@ -63,7 +63,11 @@ secondSkyscraper.fullArea;
 thirdSkyscraper.fullArea;
 
 firstSkyscraper.fullArea = 300000;
-firstSkyscraper.floors;
+
+console.log(
+    firstSkyscraper.floors,
+    firstSkyscraper.length,
+    firstSkyscraper.width);
 
 // 4.  Оберните firstSkyscraper, secondSkyscraper и thirdSkyscraper в массив 
 // skyscrapers и отсортируйте его по возрастанию высоты небоскребов, 
