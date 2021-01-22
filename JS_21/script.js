@@ -11,13 +11,16 @@
 // Для обработки неуспешной уборки в then используйте console.log(err). 
 // Где err это аргумент reject. Текст ошибки придумайте сами.
 
-let dirty = prompt('Определите уровень загрязнения от 0 до  10:', "");
+let dirty = +prompt('Определите уровень загрязнения от 0 до  10:', "");
 
 const cleanRoom = dirtyLevel => {
     return new Promise((resolve, reject) => {
         
-        if (dirtyLevel <= 10) {
+        if( dirtyLevel <= 10 && dirtyLevel >= 0 &&
+            typeof dirtyLevel === "number" && !isNaN(dirtyLevel) ) {
+
             setTimeout(() => resolve(dirtyLevel), dirtyLevel * 1000)
+
         } else {
             setTimeout(() => reject('Ошибка! Уборка не будет выполнена'), dirtyLevel * 1000)
         }
