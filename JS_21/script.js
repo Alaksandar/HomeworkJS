@@ -33,25 +33,25 @@
 // // )
 
 // or:
-// let dirtyLevel = +prompt('Определите уровень загрязнения от 0 до  10:', "");
+let dirtyLevel = +prompt('Определите уровень загрязнения от 0 до  10:', "");
 
-// function cleanRoom() {
-//     let cleanTime = dirtyLevel * 1000;
-//         return new Promise((resolve, reject) => {
-//             setTimeout(() => {
-//                 if (dirtyLevel <= 10 && dirtyLevel >= 0 && !isNaN(dirtyLevel)) {
-//                     resolve(cleanTime);
-//                 } else {
-//                     reject('Ошибка! Уборка не будет выполнена');
-//                 }
-//             }, cleanTime)
-//         })
-// }
+function cleanRoom() {
+    let cleanTime = dirtyLevel * 1000;
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (dirtyLevel <= 10 && dirtyLevel >= 0 && !isNaN(dirtyLevel)) {
+                    resolve(cleanTime);
+                } else {
+                    reject('Ошибка! Уборка не будет выполнена');
+                }
+            }, cleanTime)
+        })
+}
 
-// cleanRoom(dirtyLevel).then(
-//     success => console.log(`Уборка проведена успешно за ${success / 1000} сек.`),
-//     err => console.log(err)
-// )
+cleanRoom(dirtyLevel).then(
+    success => console.log(`Уборка проведена успешно за ${success / 1000} сек.`),
+    err => console.log(err)
+)
 
 // - Задание со звездочкой. Расширьте предыдущее задание так, чтобы можно было осуществить 
 // последовательную уборку трех комнат. Для этого создайте цепочку промисов. Только после того,
@@ -100,10 +100,55 @@ cleanRooms(3, 2, 1);
 // 		}	
 // Обратите внимание, что информация должна быть отсортирована по убыванию повторений.
 
-// function(arr) {
-//     Object.defineProperties(arr)
-// }
-// let promise = new Promise(arr) {
+let array = ["str", "str1", "str2", "str", "str2", "str", "str3", "str1", "str4", "str4"];
 
-// }
+function countRepeats(arr) {
+    
+    let counts = {};
+    let res = [];
+    for (let i in arr) {
+        counts[arr[i]] = (counts[arr[i]] || 0) + 1;
+    }
+
+    Object.keys(counts).sort(function(a, b) {
+        return counts[b] - counts[a]
+    }).forEach(function(el, idx, arr) {
+        res.push([el, counts[el]]);
+    });
+    return res;
+}
+countRepeats(array);
+
+
+
+
+
+
+
+
+
+
+
 // let arr = ["str", "str1", "str2", "str", "str2", "str", "str3", "str1", "str4", "str4"];
+// let array;
+
+// function countRepeats() {
+//     let y = [];
+//       return function(arr){
+//         let x;
+//         arr.forEach(el => {
+//             x = [].concat(arr.pop(arr.length - 1));
+//             for (let n in arr) {
+//                 if(x.includes(arr[n])) {
+//                     x = x.concat(arr.splice(n, 1)); 
+//                 }
+//             }
+//             y.push(x);
+//         })
+//         return y;
+//         console.log(y);
+
+//       }
+// }
+// let count = countRepeats();
+// count(array);
