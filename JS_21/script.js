@@ -11,29 +11,25 @@
 // Для обработки неуспешной уборки в then используйте console.log(err). 
 // Где err это аргумент reject. Текст ошибки придумайте сами.
 
-// // let dirtyLevel = +prompt('Определите уровень загрязнения от 0 до  10:', "");
+function cleanRoom() {
+    return new Promise((resolve, reject) => {
 
-// // function cleanRoom() {
-// //     return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if( dirtyLevel <= 10 && dirtyLevel >= 0 && !isNaN(dirtyLevel) ) {
+                resolve(dirtyLevel)
+            } else {
+                reject('Ошибка! Уборка не будет выполнена')
+            }
+        }, dirtyLevel * 1000)
+    })
+}
 
-// //         if( dirtyLevel <= 10 && dirtyLevel >= 0 &&
-// //             typeof dirtyLevel === "number" && !isNaN(dirtyLevel) ) {
-
-// //             setTimeout(() => resolve(dirtyLevel), dirtyLevel * 1000)
-
-// //         } else {
-// //             setTimeout(() => reject('Ошибка! Уборка не будет выполнена'), dirtyLevel * 1000)
-// //         }
-// //     })
-// // }
-
-// // cleanRoom(dirtyLevel).then(
-// //     suc => console.log(`Уборка проведена успешно за ${suc} сек.`),
-// //     err => console.log(err)
-// // )
+cleanRoom(2).then(
+    suc => console.log(`Уборка проведена успешно за ${suc} сек.`),
+    err => console.log(err)
+)
 
 // or:
-let dirtyLevel = +prompt('Определите уровень загрязнения от 0 до  10:', "");
 
 function cleanRoom() {
     let cleanTime = dirtyLevel * 1000;
@@ -48,7 +44,7 @@ function cleanRoom() {
         })
 }
 
-cleanRoom(dirtyLevel).then(
+cleanRoom(11).then(
     success => console.log(`Уборка проведена успешно за ${success / 1000} сек.`),
     err => console.log(err)
 )
